@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Группа Медиа Вегарус</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 31, 44, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a1f2c 0%, rgba(26, 31, 44, 0.9) 50%, rgba(214, 188, 250, 0.4) 100%);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 5rem;
+            left: 2rem;
+            width: 18rem;
+            height: 18rem;
+            background: rgba(214, 188, 250, 0.1);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 5rem;
+            right: 2rem;
+            width: 24rem;
+            height: 24rem;
+            background: rgba(214, 188, 250, 0.1);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-logo {
+            max-width: 800px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+        }
+
+        .hero-text {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero-subtext {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-history {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        .hero-history-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: #1a1f2c;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Projects */
+        .projects {
+            background: rgba(240, 240, 245, 0.3);
+        }
+
+        .projects-category {
+            margin-bottom: 3rem;
+        }
+
+        .projects-category h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(26, 31, 44, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(214, 188, 250, 0.4);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .badge-development {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fcd34d;
+        }
+
+        .badge-alpha {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+
+        .badge-active {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: #6b7280;
+            line-height: 1.75;
+        }
+
+        .card-content {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(214, 188, 250, 0.4);
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #1a1f2c;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Timeline */
+        .timeline-years {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .year-btn {
+            padding: 0.75rem 2rem;
+            border: 2px solid #1a1f2c;
+            background: white;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .year-btn:hover,
+        .year-btn.active {
+            background: #1a1f2c;
+            color: white;
+        }
+
+        .timeline-events {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .timeline-card {
+            background: white;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .timeline-card:hover {
+            border-color: rgba(26, 31, 44, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .timeline-year-badge {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #1a1f2c;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Support */
+        .support-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .support-card {
+            background: white;
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .support-card:hover {
+            border-color: rgba(26, 31, 44, 0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .support-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(214, 188, 250, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .support-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .support-description {
+            color: #6b7280;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .support-btn {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .support-btn:hover {
+            border-color: #1a1f2c;
+            background: rgba(214, 188, 250, 0.2);
+        }
+
+        .mission-card {
+            background: rgba(214, 188, 250, 0.3);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mission-card p {
+            color: rgba(31, 41, 55, 0.8);
+            font-size: 1.125rem;
+            line-height: 1.75;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f2c;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.875rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .hero-text {
+                font-size: 1.25rem;
+            }
+
+            .hero-subtext {
+                font-size: 1rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .cards-grid,
+            .timeline-events,
+            .support-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="nav-logo" onclick="scrollToTop()">
+                🚀 Вегарус
+            </a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="scrollToTop()">Главная</a></li>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#timeline">История</a></li>
+                <li><a href="#support">Поддержка</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="https://cdn.poehali.dev/files/98f2718c-f5ce-43fc-b75a-a1c83825b48f.png" alt="Группа Медиа Вегарус" class="hero-logo">
+            <p class="hero-text">
+                Некоммерческая организация по разработке программного обеспечения
+            </p>
+            <p class="hero-subtext">
+                Мы создаём открытые решения на Python и Django, делая технологии доступными для всех
+            </p>
+            <div class="hero-history">
+                <div class="hero-history-item">
+                    <div class="dot"></div>
+                    <span>Основана в 2013 году</span>
+                </div>
+                <div class="hero-history-item">
+                    <div class="dot"></div>
+                    <span>Переформат в 2024 году</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Наши проекты</h2>
+                <p>Разработка программного обеспечения на Python и Django для решения реальных задач</p>
+            </div>
+
+            <div class="projects-category">
+                <h3>Программное обеспечение</h3>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-top">
+                                <div class="card-icon">📻</div>
+                                <span class="badge badge-development">В разработке</span>
+                            </div>
+                            <h3 class="card-title">DjRadioCast</h3>
+                            <p class="card-description">Программное обеспечение для управления радио на основе IceCast 2</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">IceCast 2</span>
+                                <span class="tag">Broadcasting</span>
+                            </div>
+                            <a href="#" class="card-link">
+                                Перейти к проекту →
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-top">
+                                <div class="card-icon">🖥️</div>
+                                <span class="badge badge-development">В разработке</span>
+                            </div>
+                            <h3 class="card-title">Zeppeline WSCP</h3>
+                            <p class="card-description">Панель управления хостинга (сайты)</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="tags">
+                                <span class="tag">Hosting</span>
+                                <span class="tag">Control Panel</span>
+                                <span class="tag">Web</span>
+                            </div>
+                            <a href="#" class="card-link">
+                                Перейти к проекту →
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-top">
+                                <div class="card-icon">💻</div>
+                                <span class="badge badge-alpha">Альфа-версия</span>
+                            </div>
+                            <h3 class="card-title">Azurothoss</h3>
+                            <p class="card-description">Фреймворк SCSS совместно с Brython</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="tags">
+                                <span class="tag">SCSS</span>
+                                <span class="tag">Brython</span>
+                                <span class="tag">Framework</span>
+                            </div>
+                            <a href="#" class="card-link">
+                                Перейти к проекту →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-category">
+                <h3>Веб-сайты</h3>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-top">
+                                <div class="card-icon">📰</div>
+                                <span class="badge badge-active">Активен</span>
+                            </div>
+                            <h3 class="card-title">КосмосТайм</h3>
+                            <p class="card-description">Информационно-развлекательный сайт</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="tags">
+                                <span class="tag">Django</span>
+                                <span class="tag">Медиа</span>
+                                <span class="tag">Контент</span>
+                            </div>
+                            <a href="#" class="card-link">
+                                Перейти к проекту →
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-top">
+                                <div class="card-icon">🎵</div>
+                                <span class="badge badge-active">Активен</span>
+                            </div>
+                            <h3 class="card-title">Радио "5-я волна"</h3>
+                            <p class="card-description">Онлайн радиостанция: поп-музыка, 80-2000х, дискотеки, релаксная музыка, новости и поздравления</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="tags">
+                                <span class="tag">Радио</span>
+                                <span class="tag">Онлайн</span>
+                                <span class="tag">Музыка</span>
+                            </div>
+                            <a href="#" class="card-link">
+                                Перейти к проекту →
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-top">
+                                <div class="card-icon">🚂</div>
+                                <span class="badge badge-active">Активен</span>
+                            </div>
+                            <h3 class="card-title">TrainPedia</h3>
+                            <p class="card-description">Российская железнодорожная википедия</p>
+                        </div>
+                        <div class="card-content">
+                            <div class="tags">
+                                <span class="tag">Википедия</span>
+                                <span class="tag">РЖД</span>
+                                <span class="tag">База знаний</span>
+                            </div>
+                            <a href="#" class="card-link">
+                                Перейти к проекту →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline">
+        <div class="container">
+            <div class="section-header">
+                <h2>История компании</h2>
+                <p>Наш путь от основания до сегодняшнего дня</p>
+            </div>
+
+            <div class="timeline-years">
+                <button class="year-btn active" onclick="showYear('2013')">2013</button>
+                <button class="year-btn" onclick="showYear('2014')">2014</button>
+                <button class="year-btn" onclick="showYear('2024')">2024</button>
+            </div>
+
+            <div id="events-2013" class="timeline-events">
+                <div class="timeline-card">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Основание компании" class="timeline-image">
+                    <div class="card-header">
+                        <span class="timeline-year-badge">2013</span>
+                        <h3 class="card-title">Основание компании Вегарус</h3>
+                        <p class="card-description">Начало пути: создание некоммерческой организации по разработке программного обеспечения</p>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Портал Вегарус" class="timeline-image">
+                    <div class="card-header">
+                        <span class="timeline-year-badge">2013</span>
+                        <h3 class="card-title">Открытие сайта портал Вегарус</h3>
+                        <p class="card-description">Запуск официального портала компании для представления проектов и услуг</p>
+                    </div>
+                </div>
+
+                <div class="timeline-card">
+                    <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&q=80" alt="Радио" class="timeline-image">
+                    <div class="card-header">
+                        <span class="timeline-year-badge">2013.12</span>
+                        <h3 class="card-title">Открытие радио "5-я МОСКВА"</h3>
+                        <p class="card-description">Запуск второго проекта — онлайн радиостанции "5-я МОСКВА"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="events-2014" class="timeline-events hidden">
+                <div class="timeline-card">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80" alt="Развитие" class="timeline-image">
+                    <div class="card-header">
+                        <span class="timeline-year-badge">2014</span>
+                        <h3 class="card-title">Развитие проектов</h3>
+                        <p class="card-description">Расширение функционала существующих проектов и привлечение аудитории</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="events-2024" class="timeline-events hidden">
+                <div class="timeline-card">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" alt="Переформат" class="timeline-image">
+                    <div class="card-header">
+                        <span class="timeline-year-badge">2024</span>
+                        <h3 class="card-title">Переформат компании</h3>
+                        <p class="card-description">Новый этап развития: обновление стратегии и расширение направлений деятельности</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support">
+        <div class="container">
+            <div class="section-header">
+                <h2>Поддержите нас</h2>
+                <p>Ваша поддержка помогает создавать качественное ПО для всего сообщества</p>
+            </div>
+
+            <div class="support-cards">
+                <div class="support-card">
+                    <div class="support-icon">❤️</div>
+                    <h3 class="support-title">Финансовая поддержка</h3>
+                    <p class="support-description">Ваши пожертвования помогают нам продолжать разработку открытых решений и поддерживать инфраструктуру проектов</p>
+                    <button class="support-btn">Поддержать проект</button>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">🔀</div>
+                    <h3 class="support-title">Вклад в код</h3>
+                    <p class="support-description">Присоединяйтесь к разработке наших проектов на GitHub, помогайте улучшать код и документацию</p>
+                    <button class="support-btn">GitHub</button>
+                </div>
+
+                <div class="support-card">
+                    <div class="support-icon">👥</div>
+                    <h3 class="support-title">Сообщество</h3>
+                    <p class="support-description">Помогайте другим пользователям, делитесь опытом и участвуйте в обсуждениях развития проектов</p>
+                    <button class="support-btn">Присоединиться</button>
+                </div>
+            </div>
+
+            <div class="mission-card">
+                <h3>О нашей миссии</h3>
+                <p>Группа Медиа Вегарус — это некоммерческая организация, которая верит в силу открытого программного обеспечения. Мы создаём инструменты на Python и Django, которые помогают разработчикам и организациям решать реальные задачи. Наша цель — сделать технологии доступными для всех.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 Группа Медиа Вегарус. Некоммерческая организация по разработке ПО</p>
+    </footer>
+
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showYear(year) {
+            // Hide all events
+            document.querySelectorAll('[id^="events-"]').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Show selected year
+            document.getElementById('events-' + year).classList.remove('hidden');
+            
+            // Update button states
+            document.querySelectorAll('.year-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
