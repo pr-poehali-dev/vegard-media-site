@@ -1,32 +1,67 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 
-const projects = [
+const softwareProjects = [
   {
-    title: 'Python Backend Solutions',
-    description: 'Разработка высокопроизводительных серверных решений на Python с акцентом на масштабируемость и надежность',
+    title: 'DjRadioCast',
+    description: 'Программное обеспечение для управления радио на основе IceCast 2',
+    icon: 'Radio',
+    status: 'development',
+    tags: ['Python', 'IceCast 2', 'Broadcasting']
+  },
+  {
+    title: 'Zeppeline WSCP',
+    description: 'Панель управления хостинга (сайты)',
+    icon: 'Server',
+    status: 'development',
+    tags: ['Hosting', 'Control Panel', 'Web']
+  },
+  {
+    title: 'Azurothoss',
+    description: 'Фреймворк SCSS совместно с Brython',
     icon: 'Code2',
-    tags: ['Python', 'FastAPI', 'AsyncIO']
-  },
-  {
-    title: 'Django Web Applications',
-    description: 'Создание полнофункциональных веб-приложений с использованием Django фреймворка и современных практик разработки',
-    icon: 'Globe',
-    tags: ['Django', 'REST API', 'PostgreSQL']
-  },
-  {
-    title: 'Open Source Tools',
-    description: 'Разработка и поддержка инструментов с открытым исходным кодом для сообщества разработчиков',
-    icon: 'Package',
-    tags: ['MIT License', 'Community', 'Documentation']
-  },
-  {
-    title: 'Data Processing',
-    description: 'Системы обработки и анализа данных с использованием Python экосистемы',
-    icon: 'Database',
-    tags: ['Pandas', 'NumPy', 'Data Science']
+    status: 'alpha',
+    tags: ['SCSS', 'Brython', 'Framework']
   }
 ];
+
+const websiteProjects = [
+  {
+    title: 'КосмосТайм',
+    description: 'Информационно-развлекательный сайт',
+    icon: 'Newspaper',
+    status: 'active',
+    tags: ['Django', 'Медиа', 'Контент']
+  },
+  {
+    title: 'Радио "5-я волна"',
+    description: 'Онлайн радиостанция: поп-музыка, 80-2000х, дискотеки, релаксная музыка, новости и поздравления',
+    icon: 'Music',
+    status: 'active',
+    tags: ['Радио', 'Онлайн', 'Музыка']
+  },
+  {
+    title: 'TrainPedia',
+    description: 'Российская железнодорожная википедия',
+    icon: 'Train',
+    status: 'active',
+    tags: ['Википедия', 'РЖД', 'База знаний']
+  }
+];
+
+const getStatusBadge = (status: string) => {
+  switch (status) {
+    case 'development':
+      return <Badge variant="outline" className="bg-yellow-100 text-yellow-800 border-yellow-300">В разработке</Badge>;
+    case 'alpha':
+      return <Badge variant="outline" className="bg-blue-100 text-blue-800 border-blue-300">Альфа-версия</Badge>;
+    case 'active':
+      return <Badge variant="outline" className="bg-green-100 text-green-800 border-green-300">Активен</Badge>;
+    default:
+      return null;
+  }
+};
 
 const Projects = () => {
   return (
@@ -40,41 +75,83 @@ const Projects = () => {
             Разработка программного обеспечения на Python и Django для решения реальных задач
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <Card 
-              key={index} 
-              className="border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardHeader>
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-secondary rounded-lg">
-                    <Icon name={project.icon} size={24} className="text-primary" />
+
+        {/* Software Projects */}
+        <div className="mb-12">
+          <h3 className="text-2xl font-semibold mb-6 text-foreground">Программное обеспечение</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {softwareProjects.map((project, index) => (
+              <Card 
+                key={index} 
+                className="border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <CardHeader>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="p-3 bg-secondary rounded-lg">
+                      <Icon name={project.icon} size={24} className="text-primary" />
+                    </div>
+                    {getStatusBadge(project.status)}
                   </div>
-                  <div className="flex-1">
-                    <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
-                    <CardDescription className="text-base">
-                      {project.description}
-                    </CardDescription>
+                  <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span 
+                        key={tagIndex}
+                        className="px-3 py-1 text-sm bg-secondary text-secondary-foreground rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span 
-                      key={tagIndex}
-                      className="px-3 py-1 text-sm bg-secondary text-secondary-foreground rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Website Projects */}
+        <div>
+          <h3 className="text-2xl font-semibold mb-6 text-foreground">Веб-сайты</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {websiteProjects.map((project, index) => (
+              <Card 
+                key={index} 
+                className="border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg animate-fade-in"
+                style={{ animationDelay: `${(index + 3) * 0.1}s` }}
+              >
+                <CardHeader>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="p-3 bg-secondary rounded-lg">
+                      <Icon name={project.icon} size={24} className="text-primary" />
+                    </div>
+                    {getStatusBadge(project.status)}
+                  </div>
+                  <CardTitle className="text-xl mb-2">{project.title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, tagIndex) => (
+                      <span 
+                        key={tagIndex}
+                        className="px-3 py-1 text-sm bg-secondary text-secondary-foreground rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
