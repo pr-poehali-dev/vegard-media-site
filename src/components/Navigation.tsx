@@ -51,6 +51,12 @@ const Navigation = () => {
               Проекты
             </button>
             <button 
+              onClick={() => scrollToSection('timeline')}
+              className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+            >
+              История
+            </button>
+            <button 
               onClick={() => scrollToSection('support')}
               className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >

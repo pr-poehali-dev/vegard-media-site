@@ -1,6 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
+import Timeline from '@/components/Timeline';
 import Support from '@/components/Support';
 
 const Index = () => {
@@ -9,6 +10,7 @@ const Index = () => {
       <Navigation />
       <Hero />
       <Projects />
+      <Timeline />
       <Support />
       
       <footer className="bg-primary text-primary-foreground py-8 px-4">
