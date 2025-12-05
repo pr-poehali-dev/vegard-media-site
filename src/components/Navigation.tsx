@@ -24,14 +24,14 @@ const Navigation = () => {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
+        isScrolled ? 'bg-primary/95 backdrop-blur-sm shadow-sm' : 'bg-primary/80 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <button 
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-xl font-bold text-primary hover:opacity-80 transition-opacity"
+            className="flex items-center gap-2 text-xl font-bold text-primary-foreground hover:opacity-80 transition-opacity"
           >
             <Icon name="Rocket" size={24} />
             <span>Вегарус</span>
@@ -40,19 +40,19 @@ const Navigation = () => {
           <div className="flex items-center gap-6">
             <button 
               onClick={scrollToTop}
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
               Главная
             </button>
             <button 
               onClick={() => scrollToSection('projects')}
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
               Проекты
             </button>
             <button 
               onClick={() => scrollToSection('support')}
-              className="text-foreground/70 hover:text-primary transition-colors"
+              className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
             >
               Поддержка
             </button>

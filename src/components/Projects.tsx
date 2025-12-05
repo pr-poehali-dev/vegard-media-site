@@ -8,21 +8,24 @@ const softwareProjects = [
     description: 'Программное обеспечение для управления радио на основе IceCast 2',
     icon: 'Radio',
     status: 'development',
-    tags: ['Python', 'IceCast 2', 'Broadcasting']
+    tags: ['Python', 'IceCast 2', 'Broadcasting'],
+    link: '#'
   },
   {
     title: 'Zeppeline WSCP',
     description: 'Панель управления хостинга (сайты)',
     icon: 'Server',
     status: 'development',
-    tags: ['Hosting', 'Control Panel', 'Web']
+    tags: ['Hosting', 'Control Panel', 'Web'],
+    link: '#'
   },
   {
     title: 'Azurothoss',
     description: 'Фреймворк SCSS совместно с Brython',
     icon: 'Code2',
     status: 'alpha',
-    tags: ['SCSS', 'Brython', 'Framework']
+    tags: ['SCSS', 'Brython', 'Framework'],
+    link: '#'
   }
 ];
 
@@ -32,21 +35,24 @@ const websiteProjects = [
     description: 'Информационно-развлекательный сайт',
     icon: 'Newspaper',
     status: 'active',
-    tags: ['Django', 'Медиа', 'Контент']
+    tags: ['Django', 'Медиа', 'Контент'],
+    link: '#'
   },
   {
     title: 'Радио "5-я волна"',
     description: 'Онлайн радиостанция: поп-музыка, 80-2000х, дискотеки, релаксная музыка, новости и поздравления',
     icon: 'Music',
     status: 'active',
-    tags: ['Радио', 'Онлайн', 'Музыка']
+    tags: ['Радио', 'Онлайн', 'Музыка'],
+    link: '#'
   },
   {
     title: 'TrainPedia',
     description: 'Российская железнодорожная википедия',
     icon: 'Train',
     status: 'active',
-    tags: ['Википедия', 'РЖД', 'База знаний']
+    tags: ['Википедия', 'РЖД', 'База знаний'],
+    link: '#'
   }
 ];
 
@@ -99,7 +105,7 @@ const Projects = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag, tagIndex) => (
                       <span 
                         key={tagIndex}
@@ -109,6 +115,15 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
+                  >
+                    Перейти к проекту
+                    <Icon name="ExternalLink" size={16} />
+                  </a>
                 </CardContent>
               </Card>
             ))}
@@ -138,7 +153,7 @@ const Projects = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag, tagIndex) => (
                       <span 
                         key={tagIndex}
@@ -148,6 +163,15 @@ const Projects = () => {
                       </span>
                     ))}
                   </div>
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium"
+                  >
+                    Перейти к проекту
+                    <Icon name="ExternalLink" size={16} />
+                  </a>
                 </CardContent>
               </Card>
             ))}
